@@ -1,0 +1,104 @@
+select
+
+	l.id,
+	l.title,
+  l.autor,
+  --l.descricao,
+  l.user_id,
+  u.name,
+  u.id as users_id
+
+
+from
+
+	books as l
+-- , users as u
+join users as u on u.id = l.user_id
+
+-- where (
+
+-- -- 		l.title like '%tu%'
+-- -- or 	l.descricao like '%tu%'
+
+-- )
+
+-- and l.ano_de_lancamento = 1955
+and u.name like '%dev%'
+-- and u.id = l.user_id
+
+
+-- update books set user_id = 1 where id = 9;
+
+
+
+
+
+
+
+
+
+-- Criaçao da tabela de usuarios
+
+drop table users;
+
+
+create table users (
+	
+  id integer primary key,
+  name varchar(255) not null,
+  email varchar(255) not null
+
+);
+-- //////////////////////////////
+
+insert into users (name, email) values ('DevKing', 'davking@email.com');
+insert into users (name, email) values ('Felipe', 'davking@email.com');
+
+--////////////////////////////////
+
+
+drop table books;
+
+
+create table books (
+  id integer primary key,
+  title varchar(255),
+  autor varchar(255),
+  descricao text,
+  ano_de_lancamento integer,
+  user_id integer,
+  foreign key(user_id) references users(id) on delete cascade
+);
+
+
+insert into books (title, autor, descricao) values ('Harry Potter e a Pedra Filosofal', 'J.K. Rowling', 'Harry Potter é um garoto cujos pais, feiticeiros, foram assassinados por um poderosíssimo bruxo quando ele ainda era um bebê. Ele foi levado, então, para a casa dos tios que nada tinham a ver com o sobrenatural. Pelo contrário. Até os 10 anos, Harry foi uma espécie de gata borralheira: maltratado pelos tios, herdava roupas velhas do primo gorducho, tinha óculos remendados e era tratado como um estorvo. No dia de seu aniversário de 11 anos, entretanto, ele parece deslizar por um buraco sem fundo, como o de Alice no país das maravilhas, que o conduz a um mundo mágico. ');
+insert into books (title, autor, descricao) values ('1984', 'George Orwell', 'Uma distopia que explora o totalitarismo, a vigilância e a repressão do pensamento.');
+
+insert into books (title, autor, descricao) values
+('Admirável Mundo Novo', 'Aldous Huxley', 'Uma sociedade futurista que explora temas de controle social e condicionamento.'),
+('Fahrenheit 451', 'Ray Bradbury', 'Em um mundo onde os livros são proibidos, a história explora a censura e a ignorância.'),
+('Laranja Mecânica', 'Anthony Burgess', 'A história de um jovem envolvido em crimes violentos em uma sociedade distópica.'),
+('A Revolução dos Bichos', 'George Orwell', 'Uma sátira sobre a corrupção e a tirania disfarçadas de utopia.'),
+('Neuromancer', 'William Gibson', 'Um clássico da ficção científica que introduz o conceito de cyberpunk e a realidade virtual.'),
+('O Conto da Aia', 'Margaret Atwood', 'Em uma sociedade totalitária, mulheres são subjugadas e têm direitos restritos.'),
+('O Senhor das Moscas', 'William Golding', 'A história explora a degradação moral em um grupo de crianças isoladas em uma ilha.'),
+('Jogador Número 1', 'Ernest Cline', 'Um mundo futurista em que a realidade virtual é o centro da vida social e econômica.'),
+('O Homem Invisível', 'H.G. Wells', 'Uma história de ficção científica sobre um cientista que descobre o segredo da invisibilidade.'),
+('Duna', 'Frank Herbert', 'Em um planeta desértico, disputas de poder e sobrevivência se desenrolam em uma saga épica.');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

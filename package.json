@@ -1,0 +1,16 @@
+{
+  "name": "bookwise",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
+  },
+  "scripts": {
+    "tw": "npx tailwindcss -i ./public/assets/css/tailwind.css -o public/assets/css/dist/build.css --watch",
+    "serve": "php -S localhost:8000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

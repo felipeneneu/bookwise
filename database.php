@@ -5,27 +5,40 @@ class DB
 {
 
   private $db;
-  public function __construct()
-  {
-    $this->db = new PDO('sqlite:database.sqlite');
-  }
-  public function books($pesquisa = null)
+
+  public function __construct($config)
+
   {
 
 
+    //sqlite
+    // $this->db = new PDO($connectionString);
 
-    $query =  $this->db->query("select * from books");
-    $items = $query->fetchAll();
-
-    return array_map(fn($item) => Book::make($item), $items);
+    $this->db = new PDO($this->getDsn($config));
   }
 
-  public function book($id)
+  private function getDsn($config)
   {
-    $sql = "select * from books";
-    $sql .= " where id = " . $id;
-    $query =  $this->db->query($sql);
-    $items = $query->fetchAll();
-    return array_map(fn($item) => Book::make($item), $items)[0];
+    $driver = $config['driver'];
+    unset($config['driver']);
+    $dsn = $driver . ':' . http_build_query($config, '', ';');
+
+    if ($driver == 'sqlite') {
+      $dsn = $driver . ':' . $config['database'];
+    }
+
+    return $dsn;
+  }
+  public function query($query, $class = null, $params = [])
+  {
+    $prepare = $this->db->prepare($query);
+    if ($class) {
+      $prepare->setFetchMode(PDO::FETCH_CLASS, $class);
+    }
+    $prepare->execute($params);
+
+    return $prepare;
   }
 }
+
+$database = new DB($config['database']);

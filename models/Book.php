@@ -6,16 +6,6 @@ class Book
   public $title;
   public $autor;
   public $descricao;
-
-
-  public static function make($item)
-  {
-    $book = new self();
-    $book->id = $item['id'];
-    $book->descricao = $item['descricao'];
-    $book->title = $item['title'];
-    $book->autor = $item['autor'];
-
-    return $book;
-  }
+  public $user_id;
+  public $ano_de_lancamento;
 }

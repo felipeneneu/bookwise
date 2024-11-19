@@ -6,7 +6,15 @@
       <div class="text-sm ">Digite seu e-mail abaixo para criar sua conta</div>
     </div>
 
-    <form class="p-4 space-y-4">
+    <form class="p-4 space-y-4" method="post" action="/registrar">
+      <div class="flex flex-col">
+        <label for="" class="text-stone-400 mb-px ml-px">Nome</label>
+        <input
+          type="text"
+          name="name" required
+          class="border-slate-800 border-2 rounded-md bg-slate-950 text-sm focus:outline-none px-2 py-2 w-full"
+          placeholder="Digite seu Nome" />
+      </div>
       <div class="flex flex-col">
         <label for="" class="text-stone-400 mb-px ml-px">E-mail</label>
         <input
@@ -28,7 +36,7 @@
         <label for="" class="text-stone-400 mb-px ml-px">Senha</label>
         <input
           type="password"
-          name="password" required
+          name="senha" required
           class="border-slate-800 border-2 rounded-md bg-slate-950 text-sm focus:outline-none px-2 py-2 w-full"
           placeholder="Digite sua senha..." />
       </div>

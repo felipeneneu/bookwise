@@ -1,4 +1,4 @@
 <?php
 
-
-view('signup');
+$mensagem = $_REQUEST['mensagem'] ?? '';
+view('signup', compact('mensagem'));

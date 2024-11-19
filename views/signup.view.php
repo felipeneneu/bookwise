@@ -7,27 +7,43 @@
     </div>
 
     <form class="p-4 space-y-4" method="post" action="/registrar">
+      <?php if (isset($mensagem) && strlen($mensagem)): ?>
+        <div type="reset" class="bg-green-900 px-4 py-2 rounded-md text-green-400 font-semibold border-green-800 border-2"><?= $mensagem ?></div>
+      <?php endif; ?>
+
+      <?php if (isset($_SESSION['validacoes']) && sizeof($_SESSION['validacoes'])): ?>
+        <div type="reset" class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
+          <ul>
+            <li>Deu ruim!!</li>
+            <?php foreach ($_SESSION['validacoes'] as $validacao): ?>
+              <li><?= $validacao ?></li>
+            <?php endforeach; ?>
+          </ul>
+
+        </div>
+      <?php endif; ?>
+
       <div class="flex flex-col">
         <label for="" class="text-stone-400 mb-px ml-px">Nome</label>
         <input
           type="text"
-          name="name" required
+          name="name"
           class="border-slate-800 border-2 rounded-md bg-slate-950 text-sm focus:outline-none px-2 py-2 w-full"
           placeholder="Digite seu Nome" />
       </div>
       <div class="flex flex-col">
         <label for="" class="text-stone-400 mb-px ml-px">E-mail</label>
         <input
-          type="email"
-          name="email" required
+          type="text"
+          name="email"
           class="border-slate-800 border-2 rounded-md bg-slate-950 text-sm focus:outline-none px-2 py-2 w-full"
           placeholder="Digite seu e-mail..." />
       </div>
       <div class="flex flex-col">
         <label for="" class="text-stone-400 mb-px ml-px">E-mail</label>
         <input
-          type="email"
-          name="email_confirmed" required
+          type="text"
+          name="email_confirmed"
           class="border-slate-800 border-2 rounded-md bg-slate-950 text-sm focus:outline-none px-2 py-2 w-full"
           placeholder="Confirme seu e-mail..." />
       </div>
@@ -36,12 +52,12 @@
         <label for="" class="text-stone-400 mb-px ml-px">Senha</label>
         <input
           type="password"
-          name="senha" required
+          name="senha"
           class="border-slate-800 border-2 rounded-md bg-slate-950 text-sm focus:outline-none px-2 py-2 w-full"
           placeholder="Digite sua senha..." />
       </div>
       <button type="reset" class="bg-slate-950 px-4 py-2 rounded-md text-white font-semibold hover:bg-slate-800 border-slate-800 border-2 text-center">Cancelar</button>
-      <button type="submit" class="bg-slate-950 px-4 py-2 rounded-md text-white font-semibold hover:bg-slate-800 border-slate-800 border-2 text-center">Entrar</button>
+      <button type="submit" class="bg-slate-950 px-4 py-2 rounded-md text-white font-semibold hover:bg-slate-800 border-slate-800 border-2 text-center">Registrar</button>
 
     </form>
 

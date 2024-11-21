@@ -7,12 +7,16 @@
     </div>
 
     <form class="p-4 space-y-4" method="post" action="/registrar">
-      <?php if (isset($mensagem) && strlen($mensagem)): ?>
+      <?php if (isset($mensagem) && strlen($mensagem)):
+
+      ?>
+
+
         <div type="reset" class="bg-green-900 px-4 py-2 rounded-md text-green-400 font-semibold border-green-800 border-2"><?= $mensagem ?></div>
       <?php endif; ?>
 
       <?php if (isset($_SESSION['validacoes']) && sizeof($_SESSION['validacoes'])): ?>
-        <div type="reset" class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
+        <div class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
           <ul>
             <li>Deu ruim!!</li>
             <?php foreach ($_SESSION['validacoes'] as $validacao): ?>

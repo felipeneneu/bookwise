@@ -20,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if ($user) {
     $_SESSION['auth'] = $user;
-    $_SESSION['mensagem'] = 'Seja bem vindo' . $user->name . '!';
+    flash()->push('mensagem', 'Seja bem vindo ' . $user->name . '!');
+    // $_SESSION['mensagem'] = 'Seja bem vindo' . $user->name . '!';
     header('location: /');
     exit();
   }

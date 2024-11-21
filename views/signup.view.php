@@ -15,11 +15,11 @@
         <div type="reset" class="bg-green-900 px-4 py-2 rounded-md text-green-400 font-semibold border-green-800 border-2"><?= $mensagem ?></div>
       <?php endif; ?>
 
-      <?php if (isset($_SESSION['validacoes']) && sizeof($_SESSION['validacoes'])): ?>
+      <?php if ($validacoes = flash()->get('validacoes')): ?>
         <div class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
           <ul>
             <li>Deu ruim!!</li>
-            <?php foreach ($_SESSION['validacoes'] as $validacao): ?>
+            <?php foreach ($validacoes as $validacao): ?>
               <li><?= $validacao ?></li>
             <?php endforeach; ?>
           </ul>

@@ -118,7 +118,8 @@ class Validacao
   public function naoPassou()
   {
 
-    $_SESSION['validacoes'] = $this->validacoes;
+    flash()->push('validacoes', $this->validacoes);
+    // $_SESSION['validacoes'] = $this->validacoes;
     return sizeof($this->validacoes) > 0;
   }
 }

@@ -28,5 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ]
   );
 }
-header('location:/signup?mensagem=Registro com Sucesso!');
+flash()->push('mensagem', 'Registro com Sucesso! Faça o Login');
+header('location:/login');
 exit();

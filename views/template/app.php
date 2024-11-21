@@ -10,8 +10,7 @@
 
 <body class="text-slate-400 ">
 
-  <header class="bg-neutral
- border-b-primary border-b-2">
+  <header class="bg-neutral border-b-primary border-b-2">
     <nav class="text-primary flex items-center justify-between px-8 py-5 mx-auto max-w-screen-lg">
       <div class="text-2xl text-secondary-content
  font-sans font-black tracking-widest"><a href="/">🕮 Book Wise</a>
@@ -45,6 +44,13 @@
 
 
   <main class="mx-auto max-w-screen-lg space-y-10">
+    <div class="justify-center flex mt-9 items-center">
+      <?php if ($mensagem = flash()->get('mensagem')): ?>
+        <div class="bg-green-900 px-4 py-2 rounded-md text-green-400 font-semibold border-green-800">
+          <?= $mensagem ?>
+        </div>
+      <?php endif; ?>
+    </div>
     <?php require "./views/{$view}.view.php"; ?>
   </main>
 </body>

@@ -24,3 +24,8 @@ function abort($code)
   view($code);
   die();
 }
+
+function flash()
+{
+  return new Flash;
+}

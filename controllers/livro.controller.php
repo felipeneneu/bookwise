@@ -13,6 +13,16 @@ $book = $database->query(
   ['id' => $_GET['id']]
 )->fetch();
 
+$avaliacoes = $database->query(
+  " 
+  select *
+  from avaliacoes where book_id = :id 
+",
+  Avaliacao::class,
+  ['id' => $_GET['id']]
+)->fetchAll();
+
 view('livro', [
-  'book' => $book
+  'book' => $book,
+  'avaliacoes' => $avaliacoes
 ]);

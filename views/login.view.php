@@ -1,55 +1,48 @@
-<div class="mt-12 py-12 w-1/2 gap-2 justify-center mx-auto items-center ">
+<!-- Login new -->
+<div class=" min-h-min justify-normal">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="text-center lg:text-left px-4">
+      <h1 class="text-5xl font-bold">Faça login agora!</h1>
+      <p class="py-6">
+        Faça seu login e aproveite o melhor da leitura! Aqui você pode marcar seus livros favoritos, explorar sinopses detalhadas por gênero, e encontrar obras dos seus autores preferidos. Tudo isso em um só lugar, para tornar sua experiência literária incrível!
 
-
-
-
-  <div class="border-2 border-slate-800 rounded-xl bg-base-300 backdrop-blur supports-[backdrop-filter]:bg-slate-950/60">
-    <div class="flex flex-col px-4 py-4 gap-2 border-b border-slate-700 mb-4">
-      <h1 class="font-semibold tracking-tight text-2xl text-white">Faça seu login
-      </h1>
-      <div class="text-sm ">Digite seu e-mail e senha abaixo para entrar na sua conta</div>
+      </p>
     </div>
 
-    <form class="p-4 space-y-4" method="post">
-      <?php if ($validacoes = flash()->get('validacoes_login')): ?>
-        <div class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
-          <ul>
-            <li>Deu ruim!!</li>
-            <?php foreach ($validacoes as $validacao): ?>
-              <li><?= $validacao ?></li>
-            <?php endforeach; ?>
-          </ul>
+    <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
 
+      <form class="card-body" method="post">
+
+        <div class="form-control">
+          <?php if ($validacoes = flash()->get('validacoes_login')): ?>
+            <div class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
+              <ul>
+                <li>Deu ruim!!</li>
+                <?php foreach ($validacoes as $validacao): ?>
+                  <li><?= $validacao ?></li>
+                <?php endforeach; ?>
+              </ul>
+
+            </div>
+          <?php endif; ?>
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input type="email" placeholder="email" class="input input-bordered" name="email" />
         </div>
-      <?php endif; ?>
-      <div class="flex flex-col">
-
-        <label for="" class="text-stone-400 mb-px ml-px">E-mail</label>
-        <input
-          type="email"
-          name="email"
-          class="border-slate-800 border-2 rounded-md bg-slate-950 text-sm focus:outline-none px-2 py-2 w-full"
-          placeholder="Digite seu e-mail..." />
-      </div>
-
-      <div class="flex flex-col">
-        <label for="" class="text-stone-400 mb-px ml-px">Senha</label>
-        <input
-          type="password"
-          name="senha"
-          class="border-slate-800 border-2 rounded-md bg-slate-950 text-sm focus:outline-none px-2 py-2 w-full"
-          placeholder="Digite sua senha..." />
-      </div>
-      <button type="submit" class="bg-slate-950 px-4 py-2 rounded-md text-white font-semibold hover:bg-slate-800 border-slate-800 border-2 text-center">Entrar</button>
-
-    </form>
-
-
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Senha</span>
+          </label>
+          <input type="password" placeholder="password" class="input input-bordered" name="senha" />
+          <label class="label">
+            <a href="#" class="label-text-alt link link-hover">Esqueceu sua senha?</a>
+          </label>
+        </div>
+        <div class="form-control mt-6">
+          <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
   </div>
-
-
-
 </div>
-
-
-<h2>Avalicões</h2>

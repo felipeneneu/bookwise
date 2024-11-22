@@ -23,8 +23,8 @@
 
       <ul class="flex gap-3">
 
-        <?php if (isset($_SESSION['auth'])): ?>
-          <li><a href="/logout">Olá, <?= $_SESSION['auth']->name ?></a></li>
+        <?php if (auth()): ?>
+          <li><a href="/logout">Olá, <?= auth()->name ?></a></li>
           <div class="avatar">
             <div class="ring-primary ring-offset-base-100 w-7 rounded-full ring ring-offset-2">
               <img src="https://conteudo.imguol.com.br/c/entretenimento/3a/2022/05/18/tom-cruise-interpreta-pete-maverick-um-dos-principais-aviadores-da-marinha-1652905110877_v2_900x506.jpg" />

@@ -46,6 +46,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 }
 
-
-
-view('login', compact('mensagem'));
+view('loginold', compact('mensagem'));

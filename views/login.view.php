@@ -11,11 +11,23 @@
     </div>
 
     <form class="p-4 space-y-4" method="post">
+      <?php if ($validacoes = flash()->get('validacoes_login')): ?>
+        <div class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
+          <ul>
+            <li>Deu ruim!!</li>
+            <?php foreach ($validacoes as $validacao): ?>
+              <li><?= $validacao ?></li>
+            <?php endforeach; ?>
+          </ul>
+
+        </div>
+      <?php endif; ?>
       <div class="flex flex-col">
+
         <label for="" class="text-stone-400 mb-px ml-px">E-mail</label>
         <input
           type="email"
-          name="email" required
+          name="email"
           class="border-slate-800 border-2 rounded-md bg-slate-950 text-sm focus:outline-none px-2 py-2 w-full"
           placeholder="Digite seu e-mail..." />
       </div>
@@ -24,7 +36,7 @@
         <label for="" class="text-stone-400 mb-px ml-px">Senha</label>
         <input
           type="password"
-          name="senha" required
+          name="senha"
           class="border-slate-800 border-2 rounded-md bg-slate-950 text-sm focus:outline-none px-2 py-2 w-full"
           placeholder="Digite sua senha..." />
       </div>
@@ -38,3 +50,6 @@
 
 
 </div>
+
+
+<h2>Avalicões</h2>

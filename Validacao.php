@@ -76,6 +76,23 @@ class Validacao
     }
     return $validacao;
   }
+
+  private function unique($table, $campo, $valor)
+  {
+    if (strlen($valor) == 0) {
+      return;
+    }
+    $db = new Database(config('database'));
+    $resultado = $db->query(
+      query: "select * from $table where $campo = :valor",
+      params: ['valor' => $valor]
+    )->fetch();
+
+    if ($resultado) {
+      $this->validacoes[] = "O $campo já está sendo usado.";
+    }
+  }
+
   private function required($campo, $valor)
   {
     if (strlen($valor) == 0) {
@@ -115,10 +132,13 @@ class Validacao
       $this->validacoes[] = "O $campo precisa ter um caracter especial nela.";
     }
   }
-  public function naoPassou()
+  public function naoPassou($nomeCustomizado = null)
   {
-
-    flash()->push('validacoes', $this->validacoes);
+    $chave = 'validacoes';
+    if ($nomeCustomizado) {
+      $chave .= '_' . $nomeCustomizado;
+    }
+    flash()->push($chave, $this->validacoes);
     // $_SESSION['validacoes'] = $this->validacoes;
     return sizeof($this->validacoes) > 0;
   }

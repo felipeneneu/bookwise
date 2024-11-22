@@ -8,4 +8,5 @@ class Book
   public $descricao;
   public $user_id;
   public $ano_de_lancamento;
+  public $img;
 }

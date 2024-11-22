@@ -15,7 +15,7 @@
         <div type="reset" class="bg-green-900 px-4 py-2 rounded-md text-green-400 font-semibold border-green-800 border-2"><?= $mensagem ?></div>
       <?php endif; ?>
 
-      <?php if ($validacoes = flash()->get('validacoes')): ?>
+      <?php if ($validacoes = flash()->get('validacoes_registrar')): ?>
         <div class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
           <ul>
             <li>Deu ruim!!</li>

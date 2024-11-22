@@ -1,8 +1,13 @@
 <h1 class="text-2xl mt-6 font-bold text-primary"><?= $book->title ?></h1>
-<div class=" bg-neutral p-2 rounded border-stone-800 border-2">
+<div class=" bg-neutral p-4 rounded border-stone-800 border-2">
   <div class="flex gap-3">
     <div class="w-1/3">
-      <img src="../public/assets/img/81ibfYk4qmL._AC_UF1000,1000_QL80_.jpg" alt="">
+      <?php if ($book->img == true): ?>
+        <img src="<?= $book->img ?>" alt="">
+      <?php else: ?>
+        <img src="https://m.media-amazon.com/images/I/71Vkg7GfPFL._AC_UF1000,1000_QL80_.jpg" alt="">
+      <?php endif ?>
+
     </div>
 
     <div class="px-2 space-y-2 w-full text-neutral-content">
@@ -15,4 +20,6 @@
   </div>
 
 
+
 </div>
+<div></div>

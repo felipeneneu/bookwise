@@ -10,11 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $validacao = Validacao::validar([
     'name' => ['required'],
-    'email' => ['required', 'email', 'confirmed'],
+    'email' => ['required', 'email', 'confirmed', 'unique:users'],
     'senha' => ['required', 'min:8', 'max:30', 'strong']
   ], $_POST);
 
-  if ($validacao->naoPassou()) {
+  if ($validacao->naoPassou('registrar')) {
     header('location:/signup');
     exit();
   }
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     params: [
       'name' => $_POST['name'],
       'email' => $_POST['email'],
-      'senha' => $_POST['senha'],
+      'senha' => password_hash($_POST['senha'], PASSWORD_BCRYPT),
     ]
   );
 }

@@ -1,5 +1,5 @@
 <!-- Login new -->
-<div class=" min-h-min justify-normal">
+<div class=" min-h-min justify-normal pb-20">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div class="text-center lg:text-left px-4">
       <h1 class="text-5xl font-bold">Faça login agora!</h1>

@@ -25,7 +25,6 @@
 <div></div>
 
 <h2 class="text-xl mt-6 font-bold text-primary">Avalicões</h2>
-
 <div class="grid grid-cols-4 gap-4 pb-10">
 
   <div class="col-span-3 gap-4 grid">
@@ -54,55 +53,56 @@
       </div>
     <?php endforeach; ?>
 
+    <?php if (auth()): ?>
 
   </div>
-  <?php if (auth()): ?>
-    <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl max-h-max pb-3">
+
+  <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl max-h-max pb-3">
 
 
 
-      <form class="card-body" method="post" action="/avaliacao-criar">
+    <form class="card-body" method="post" action="/avaliacao-criar">
 
-        <div class="form-control">
+      <div class="form-control">
 
-          <?php if ($validacoes = flash()->get('validacoes')): ?>
+        <?php if ($validacoes = flash()->get('validacoes')): ?>
 
-            <div class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
-              <input type="hidden" name="book_id" value="<?= $book->id ?>" />
-              <input type="hidden" name="user_name" value="<?= auth()->name ?>" />
-              <ul>
-                <li>Deu ruim!!</li>
-                <?php foreach ($validacoes as $validacao): ?>
-                  <li><?= $validacao ?></li>
-                <?php endforeach; ?>
-              </ul>
+          <div class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
 
-            </div>
-          <?php endif; ?>
-          <label class="label">
-            <span class="label-text">Avalição</span>
-          </label>
-          <textarea class="textarea textarea-primary" placeholder="Faça sua Avalição" name="avaliacao"></textarea>
-        </div>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Nota</span>
-          </label>
-          <select class="select select-primary w-full max-w-xs" name="nota">
-            <option disabled selected>De uma Nota!</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-        <div class="form-control mt-6">
-          <button class="btn btn-primary" type="submit">Avaliar</button>
-        </div>
-        <div></div>
-      </form>
-    <?php endif; ?>
-    </div>
+            <ul>
+              <li>Deu ruim!!</li>
+              <?php foreach ($validacoes as $validacao): ?>
+                <li><?= $validacao ?></li>
+              <?php endforeach; ?>
+            </ul>
 
-    <div class="space-y-4"></div>
+          </div>
+        <?php endif; ?>
+        <label class="label">
+          <input type="hidden" name="book_id" value="<?= $book->id ?>" />
+          <input type="hidden" name="user_name" value="<?= auth()->name ?>" />
+          <span class="label-text">Avalição</span>
+        </label>
+        <textarea class="textarea textarea-primary" placeholder="Faça sua Avalição" name="avaliacao"></textarea>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Nota</span>
+        </label>
+        <select class="select select-primary w-full max-w-xs" name="nota">
+          <option disabled selected>De uma Nota!</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="form-control mt-6">
+        <button class="btn btn-primary" type="submit">Avaliar</button>
+      </div>
+      <div></div>
+    </form>
+  <?php endif; ?>
+  </div>
+</div>

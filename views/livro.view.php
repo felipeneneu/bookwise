@@ -1,51 +1,62 @@
+<?php
+
+$sumNotas = array_reduce($avaliacoes, function ($carry, $a) {
+  return ($carry ?? 0) + $a->nota;
+}, 0);
+if (count($avaliacoes) > 0) {
+  $mediaNotas = $sumNotas / count($avaliacoes);
+  $sumNotas = min(5, round($mediaNotas));
+} else {
+  $sumNotas = 0;
+}
+
+
+
+$notaFinal = str_repeat("⭐", $sumNotas);
+// dd($notaFinal);
+?>
+<!-- Livro View -->
 <h1 class="text-2xl mt-6 font-bold text-primary"><?= $book->title ?></h1>
-<div class=" bg-neutral p-4 rounded border-stone-800 border-2">
-  <div class="flex gap-3">
-    <div class="w-1/3 ">
-      <?php if ($book->img == true): ?>
-        <img class="rounded" src="<?= $book->img ?>" alt="<?= $book->title ?>">
-      <?php else: ?>
-        <img class="rounded" src="https://m.media-amazon.com/images/I/71Vkg7GfPFL._AC_UF1000,1000_QL80_.jpg" alt="<?= $book->title ?>">
-      <?php endif ?>
-
-    </div>
-
-    <div class="px-2 space-y-2 w-full text-neutral-content">
-      <a href="/livro?id=<?= $book->id ?>" class="font-semibold text-neutral-content hover:underline"><?= $book->title ?></a>
-      <div class="text-xs italic"><?= $book->autor ?></div>
-      <div class="text-xs italic">4,9 ⭐⭐⭐⭐⭐ 38.943 avaliações de clientes </div>
-      <div class="text-sm mt-2"><?= $book->descricao ?>
-      </div>
-    </div>
-  </div>
-
-
-
-</div>
+<?php require_once 'partials/_livro.php'; ?>
 <div></div>
 
-<h2 class="text-xl mt-6 font-bold text-primary">Avalicões</h2>
+<!-- Avaliações -->
+<h2 class="text-xl mt-6 font-bold text-primary">Avaliações</h2>
 <div class="grid grid-cols-4 gap-4 pb-10">
 
-  <div class="col-span-3 gap-4 grid">
+  <div class="col-span-3 flex flex-col gap-5">
     <?php foreach ($avaliacoes as $avaliacao): ?>
 
       <div class="bg-neutral px-5 py-4 rounded border-stone-800 border-2 ">
 
-        <div class="grid grid-cols-2 gap-5 ">
-          <div class="flex flex-row gap-3 items-center">
+        <div class=" gap-5  ">
+          <div class="flex flex-row gap-3 items-center w-full">
             <div class="avatar">
               <div class="ring-primary ring-offset-base-100 w-5 h-5 rounded-full ring ring-offset-2">
                 <img src="https://conteudo.imguol.com.br/c/entretenimento/3a/2022/05/18/tom-cruise-interpreta-pete-maverick-um-dos-principais-aviadores-da-marinha-1652905110877_v2_900x506.jpg" />
               </div>
             </div>
-            <div>Postado por: <?= $avaliacao->user_name ?></div>
+            <div class="flex gap-6 max-w-7xl  items-center justify-center">
+              <div class="flex flex-row ">
+                <p>Postado por: <?= $avaliacao->user_name ?></p>
+              </div>
+              <div>
+                <p>
+                  <?php
+                  $nota = str_repeat("⭐", $avaliacao->nota);
+                  ?>
+                  Avaliação:<?= $nota ?>
+                </p>
+              </div>
+
+            </div>
+
 
           </div>
 
 
         </div>
-        <div class="px-8">
+        <div class="px-8 py-3">
           <?= $avaliacao->avaliacao ?>
         </div>
 
@@ -57,6 +68,7 @@
 
   </div>
 
+  <!-- Form -->
   <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl max-h-max pb-3">
 
 
@@ -105,4 +117,5 @@
     </form>
   <?php endif; ?>
   </div>
+
 </div>

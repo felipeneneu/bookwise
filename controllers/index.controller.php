@@ -5,14 +5,10 @@ global $database;
 //   throw new Exception("A variável \$database não foi inicializada.");
 // }
 
-$pesquisar = $_REQUEST['pesquisar'] ?? '';
 
 
-$books = $database->query(
-  "select * from books where title like :filtro",
-  Book::class,
-  ['filtro' => "%$pesquisar%"]
-)
-->fetchAll();
+// dd(auth());
+$books = Book::all($_REQUEST['pesquisar'] ?? '');
+
 
 view('index', compact('books'));

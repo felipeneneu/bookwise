@@ -1,20 +1,3 @@
-<?php
-
-$sumNotas = array_reduce($avaliacoes, function ($carry, $a) {
-  return ($carry ?? 0) + $a->nota;
-}, 0);
-if (count($avaliacoes) > 0) {
-  $mediaNotas = $sumNotas / count($avaliacoes);
-  $sumNotas = min(5, round($mediaNotas));
-} else {
-  $sumNotas = 0;
-}
-
-
-
-$notaFinal = str_repeat("⭐", $sumNotas);
-// dd($notaFinal);
-?>
 <!-- Livro View -->
 <h1 class="text-2xl mt-6 font-bold text-primary"><?= $book->title ?></h1>
 <?php require_once 'partials/_livro.php'; ?>
@@ -33,7 +16,12 @@ $notaFinal = str_repeat("⭐", $sumNotas);
           <div class="flex flex-row gap-3 items-center w-full">
             <div class="avatar">
               <div class="ring-primary ring-offset-base-100 w-5 h-5 rounded-full ring ring-offset-2">
-                <img src="https://conteudo.imguol.com.br/c/entretenimento/3a/2022/05/18/tom-cruise-interpreta-pete-maverick-um-dos-principais-aviadores-da-marinha-1652905110877_v2_900x506.jpg" />
+
+                <img class="rounded" src="<?= $avaliacao->user_avatar ?>" alt="<?= $avaliacao->user_name ?>">
+
+                <img class="rounded" src="https://avatar.iran.liara.run/public">
+
+
               </div>
             </div>
             <div class="flex gap-6 max-w-7xl  items-center justify-center">

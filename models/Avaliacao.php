@@ -8,4 +8,5 @@ class Avaliacao
   public $user_name;
   public $avaliacao;
   public $nota;
+  public $user_avatar;
 }

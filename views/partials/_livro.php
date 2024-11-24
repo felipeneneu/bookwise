@@ -12,7 +12,7 @@
     <div class="px-2 space-y-2 w-full text-neutral-content">
       <a href="/livro?id=<?= $book->id ?>" class="font-semibold text-neutral-content hover:underline"><?= $book->title ?></a>
       <div class="text-xs italic"><?= $book->autor ?></div>
-      <div class="text-xs italic"><?= $notaFinal ?> <?= count($avaliacoes) ?> Avaliações </div>
+      <div class="text-xs italic"><?= str_repeat("⭐", (int)$book->nota_avaliacao) ?><?= $book->count_avaliacoes ?> Avaliações </div>
 
       <div class="text-sm mt-2"><?= $book->descricao ?>
       </div>

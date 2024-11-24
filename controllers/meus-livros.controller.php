@@ -4,5 +4,5 @@ if (!auth()) {
   abort(403);
 }
 
-$books = $database->query("select * from books where user_id = :id", Book::class, ['id' => auth()->id]);
+$books = Book::mybooks(auth()->id);
 view('meus-livros', compact('books'));

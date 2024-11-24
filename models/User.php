@@ -6,4 +6,5 @@ class User
   public $name;
   public $email;
   public $senha;
+  public $avatar;
 }

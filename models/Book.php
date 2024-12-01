@@ -11,6 +11,7 @@ class Book
   public $img;
   public $nota_avaliacao;
   public $count_avaliacoes;
+  public $total_books;
 
   public function query($where, $params)
   {
@@ -35,6 +36,7 @@ class Book
     l.descricao,
     l.ano_de_lancamento,
     l.img",
+    
       Book::class,
       $params
     );
@@ -54,4 +56,6 @@ class Book
   {
     return (new Book)->query('title like :filtro', ['filtro' => "%$filtro%"])->fetchAll();
   }
+
+  
 }

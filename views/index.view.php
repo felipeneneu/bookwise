@@ -25,7 +25,7 @@
 
   <!-- Livro -->
   <?php foreach ($books as $book) {
-    require 'partials/_livro.php';
+    require 'partials/_index_book.php';
   } ?>
 
 

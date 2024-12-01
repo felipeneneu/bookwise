@@ -38,7 +38,7 @@
 
 
 
-    <form class="card-body" method="post" action="/livro-criar">
+    <form class="card-body" method="post" action="/livro-criar" enctype="multipart/form-data">
 
       <div class="form-control">
 
@@ -97,6 +97,16 @@
           </select>
 
         </div>
+        <div class="form-control mt-6">
+          <label class="label">
+            <span class="label-text">Capa do Livro</span>
+          </label>
+          <input
+            type="file"
+            class="file-input file-input-bordered file-input-primary w-full max-w-xs"
+            name="img" />
+        </div>
+
 
         <div class="form-control mt-6">
           <button class="btn btn-primary" type="submit">Criar Livro</button>

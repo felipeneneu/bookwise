@@ -9,14 +9,68 @@
 <div class="grid grid-cols-2 justify-between px-10">
   <div class="avatar flex flex-col gap-3 -mt-24">
     <div class="ring-white ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
-      <img src="<?= auth()->avatar ? (auth()->avatar) : 'https://avatar.iran.liara.run/public' ?>" />
+      <?php if ($user->avatar == true): ?>
+        <img src="<?= $user->avatar ?>" alt="">
+      <?php else: ?>
+        <img src="https://avatar.iran.liara.run/public" />
+      <?php endif; ?>
 
     </div>
 
 
   </div>
   <div class="flex justify-end">
-    <button class="btn btn-outline btn-primary w-[200px]">Editar</button>
+
+    <!-- You can open the modal using ID.showModal() method -->
+    <button class="btn btn-outline btn-primary w-[200px]" onclick="my_modal_3.showModal()">Editar</button>
+    <dialog id="my_modal_3" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="text-lg font-bold">Hello!</h3>
+        <p class="py-4">Press ESC key or click on ✕ button to close</p>
+
+        <form class="" method="post" action="/update-users" enctype="multipart/form-data">
+
+          <div class="form-control">
+
+            <?php if ($validacoes = flash()->get('validacoes')): ?>
+
+              <div class="bg-red-900 px-4 py-2 rounded-md text-red-400 font-semibold border-red-800 border-2">
+
+                <ul>
+                  <li>Deu ruim!!</li>
+                  <?php foreach ($validacoes as $validacao): ?>
+                    <li><?= $validacao ?></li>
+                  <?php endforeach; ?>
+                </ul>
+
+              </div>
+            <?php endif; ?>
+
+          </div>
+          <div class="form-control">
+
+            <input type="hidden" name="id" value="<?= $user_id ?>" />
+            <div class="form-control mt-6">
+              <label class="label">
+                <span class="label-text">Avatar</span>
+              </label>
+              <input
+                type="file"
+                class="file-input file-input-bordered file-input-primary w-full "
+                name="avatar" />
+            </div>
+
+
+            <div class="form-control mt-6">
+              <button class="btn btn-primary" type="submit">Add Avatar</button>
+            </div>
+
+        </form>
+      </div>
+    </dialog>
   </div>
 
 </div>
@@ -35,6 +89,7 @@
     </div>
   <?php endforeach;  ?>
 </div>
+
 <form class="card-body" method="post" action="/frases-criar">
 
   <div class="form-control">
@@ -65,3 +120,7 @@
     </div>
     <div></div>
 </form>
+
+<div class="flex flex-col gap-4 w-full">
+
+</div>

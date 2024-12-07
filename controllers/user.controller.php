@@ -2,7 +2,7 @@
 
 global $database;
 
-if (!auth()->id) {
+if (!auth() || !auth()->id) {
   abort(403);
 }
 

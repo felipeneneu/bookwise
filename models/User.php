@@ -36,6 +36,11 @@ class User
     return (new User)->query('u.id = :id', ['id' => $id])->fetch();
   }
 
+  public static function user($name)
+  {
+    return (new User)->query('u.name = :name', ['name' => $name])->fetch();
+  }
+
 
  
  

@@ -12,5 +12,5 @@ require "functions.php";
 
 // $config = require 'config.php';
 require 'database.php';
-require "Validacao.php";
+require "models/Validacao.php";
 require "routes.php";

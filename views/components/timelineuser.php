@@ -1,6 +1,6 @@
 <?php
 global $database;
-
+$time = $_SERVER['REQUEST_TIME'];
 $user_id = auth()->id;
 $somaDosLivros = $database->query(
 
@@ -49,7 +49,7 @@ $somaDeComentarios = $database->query(
     <?php foreach ($somaDosLivros as $soma): ?>
       <div class="stat-value text-primary"><?= $soma ?></div>
     <?php endforeach; ?>
-    <div class="stat-desc">21% more than last month</div>
+
   </div>
 
   <div class="stat">
@@ -70,7 +70,7 @@ $somaDeComentarios = $database->query(
     <?php foreach ($somaDeComentarios as $sumComment): ?>
       <div class="stat-value text-secondary"><?= $sumComment ?></div>
     <?php endforeach; ?>
-    <div class="stat-desc">21% more than last month</div>
+
   </div>
 
   <div class="stat">
@@ -83,7 +83,8 @@ $somaDeComentarios = $database->query(
       </div>
     </div>
     <div class="stat-value"><?= $user->name ?></div>
+    <div></div>
     <div class="stat-title"><?= $user->email ?></div>
-    <div class="stat-desc text-secondary">31 tasks remaining</div>
+
   </div>
 </div>

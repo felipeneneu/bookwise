@@ -116,9 +116,12 @@
 
           </div>
 
-
+          <label class="label">
+            <span class="label-text">Mude seu wallpaper</span>
+          </label>
+          <input type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs" name="wallpaper" />
           <div class="form-control mt-6">
-            <button class="btn btn-primary" type="submit">Adicionar Avatar</button>
+            <button class="btn btn-primary" type="submit">Atualizar</button>
           </div>
 
         </form>

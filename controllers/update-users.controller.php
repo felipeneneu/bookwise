@@ -52,6 +52,30 @@ if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] == 0) {
 } else {
   // $avatar = $user->avatar;
   header("location: /user?id=$id");
+}
+
+//Wallpaper updade
+
+if (isset($_FILES['wallpaper']) && $_FILES['wallpaper']['error'] == 0) {
+  $dir = "images/";
+  $file = $dir . basename($_FILES['wallpaper']['name']);
+  $newName = md5(rand());
+  $extensao = pathinfo($file, PATHINFO_EXTENSION);
+  $wallpaper = "$dir$newName.$extensao";
+
+  move_uploaded_file($_FILES['wallpaper']['tmp_name'], $wallpaper);
+  $database->query(
+    "update users 
+         set wallpaper = :wallpaper
+         where id = :id",
+    params: compact('id', 'wallpaper')
+  );
+  flash()->push('mensagem', 'Wallpaper foi atualizado com sucesso');
+
+  dd($_FILES['wallpaper']);
+} else {
+  // $avatar = $user->avatar;
+  header("location: /user?id=$id");
   exit();
 }
 
